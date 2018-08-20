@@ -1,35 +1,24 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { HubConnectionBuilder } from '@aspnet/signalr'
-import createConnectionContext from '../lib/createConnectionContext';
-
-const { Provider, Consumer } = createConnectionContext();
-
-const createValidConnection = () => new HubConnectionBuilder()
-  .withUrl('http://localhost:5000/hellohub')
-  .build();
-
-const createInvalidConnection = () => new HubConnectionBuilder()
-  .withUrl('http://localhost:5000/hellohub1')
-  .build();
+import { ValidConnectionContext, InvalidConnectionContext } from './connections'
 
 storiesOf('createConnectionContext', module)
   .add('Successful connect', () => (
-    <Provider createConnection={createValidConnection}>
+    <ValidConnectionContext.Provider>
       <div>
-        <Consumer>
+        <ValidConnectionContext.Consumer>
           {({ connection }) => connection && 'Connected ✔️'}
-        </Consumer>
+        </ValidConnectionContext.Consumer>
       </div>
-    </Provider>
+    </ValidConnectionContext.Provider>
   ))
   .add('Connection error', () => (
-    <Provider createConnection={createInvalidConnection}>
+    <InvalidConnectionContext.Provider>
       <div>
-        <Consumer>
+        <InvalidConnectionContext.Consumer>
           {({ connectionError }) => connectionError && 'Connection failed ❌'}
-        </Consumer>
+        </InvalidConnectionContext.Consumer>
       </div>
-    </Provider>
+    </InvalidConnectionContext.Provider>
   ));
 
