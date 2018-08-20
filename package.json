@@ -58,5 +58,10 @@
   "files": [
     "dist",
     "README.md"
+  ],
+  "keywords": [
+    "react",
+    "react-context",
+    "signalr"
   ]
 }
