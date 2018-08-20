@@ -1,6 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { ValidConnectionContext, InvalidConnectionContext } from './connections'
+import {
+  ValidConnectionContext,
+  InvalidConnectionContext
+} from './connections';
 
 storiesOf('createConnectionContext', module)
   .add('Successful connect', () => (
@@ -21,4 +24,3 @@ storiesOf('createConnectionContext', module)
       </div>
     </InvalidConnectionContext.Provider>
   ));
-
