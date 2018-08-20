@@ -1,0 +1,51 @@
+{
+  "name": "@hwdtech/react-signalr",
+  "version": "0.1.0",
+  "description": "A set of helper components to work with SignalR hub connections & streams",
+  "main": "main.js",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "npm run storybook",
+    "fmt": "prettier --write 'lib/**/*' '*.md'",
+    "build": "rimraf dist && NODE_ENV=production babel ./lib --out-dir dist",
+    "precommit": "lint-staged",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "peerDependencies": {
+    "react": "^16.3.0"
+  },
+  "devDependencies": {
+    "@aspnet/signalr": "^1.0.2",
+    "@storybook/addon-actions": "^3.4.10",
+    "@storybook/addon-info": "^3.4.10",
+    "@storybook/addon-links": "^3.4.10",
+    "@storybook/addons": "^3.4.10",
+    "@storybook/react": "^3.4.10",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.2",
+    "prettier": "^1.14.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "tslib": "^1.9.3"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "trailingComma": "none",
+    "singleQuote": true,
+    "semi": true
+  },
+  "dependencies": {}
+}
