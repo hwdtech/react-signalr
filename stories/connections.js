@@ -1,15 +1,15 @@
 import { HubConnectionBuilder } from '@aspnet/signalr';
 import createConnectionContext from '../lib/createConnectionContext';
 
-const urlNamespace = 'https://signalr-sample.herokuapp.com/';
+const urlNamespace = 'http://localhost:5000/';
 
 const createValidConnection = () =>
-  new HubConnectionBuilder().withUrl(`${urlNamespace}hellohub`).build();
+  new HubConnectionBuilder().withUrl(`${urlNamespace}counter`).build();
 
 const createInvalidConnection = () =>
-  new HubConnectionBuilder().withUrl(`${urlNamespace}hellohub1`).build();
+  new HubConnectionBuilder().withUrl(`${urlNamespace}counter1`).build();
 
-export const ValidConnectionContext = createConnectionContext(
+export const CounterConnectionContext = createConnectionContext(
   createValidConnection
 );
 export const InvalidConnectionContext = createConnectionContext(
