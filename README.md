@@ -14,4 +14,4 @@ npm install @hwdtech/react-signalr
 
 `createConnectionContext` is a utility that helps you create, open and compose SignalR hub connections
 
-See usage examples in [createConnectionContext story](stories/createConnectionContext.stories.js)
+See usage examples in [createConnectionContext story](stories/createConnectionContext.stories.tsx)
