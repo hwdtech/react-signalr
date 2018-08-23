@@ -1,7 +1,7 @@
 import { HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';
-import createConnectionContext from '../lib/createConnectionContext';
+import { createConnectionContext } from '../lib/createConnectionContext';
 
-const urlNamespace = 'https://signalr-sample.herokuapp.com/';
+const urlNamespace = 'https://react-signalr-demo.azurewebsites.net/';
 
 const createValidConnection = () =>
   new HubConnectionBuilder()
@@ -16,6 +16,7 @@ const createInvalidConnection = () =>
 export const CounterConnectionContext = createConnectionContext(
   createValidConnection
 );
+
 export const InvalidConnectionContext = createConnectionContext(
   createInvalidConnection
 );

@@ -1,24 +1,31 @@
-import React from 'react';
+import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import {
   CounterConnectionContext,
   InvalidConnectionContext
 } from './connections';
-import StreamSampleResult from './StreamSampleResult';
-import StreamSideEffectResult from './StreamSideEffectResult';
+import { StreamSideEffectResult, StreamSampleResult } from './streamHelpers';
 
-const CounterSubscriber = CounterConnectionContext.createStreamSubscriber(
-  'ObservableCounter',
-  props => [props.count, props.delayInSeconds]
-);
+interface ICounterProps {
+  count: number;
+  delayInSeconds: number;
+}
+
+const CounterSubscriber = CounterConnectionContext.createStreamSubscriber<
+  ICounterProps,
+  number
+>('ObservableCounter', (props: ICounterProps) => [
+  props.count,
+  props.delayInSeconds
+]);
 
 storiesOf('createConnectionContext', module)
   .add('Successful connect', () => (
     <CounterConnectionContext.Provider>
       <div>
         <CounterConnectionContext.Consumer>
-          {({ connection }) => connection && 'Connected ✔️'}
+          {value => value.connection && 'Connected ✔️'}
         </CounterConnectionContext.Consumer>
       </div>
     </CounterConnectionContext.Provider>
