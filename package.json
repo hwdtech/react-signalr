@@ -2,7 +2,17 @@
   "name": "@hwdtech/react-signalr",
   "version": "0.3.0",
   "description": "A set of helper components to work with SignalR hub connections & streams",
-  "main": "main.js",
+  "main": "./dist/createConnectionContext.js",
+  "directories": {
+    "lib": "./lib",
+    "example": "./stories"
+  },
+  "repository": "github:hwdtech/react-signalr",
+  "homepage": "https://github.com/hwdtech/react-signalr/blob/master/README.md",
+  "bugs": {
+    "url" : "https://github.com/hwdtech/react-signalr/issues"
+  },
+  "author": "Max Malov <mmalov@hwdtech.ru>",
   "license": "MIT",
   "private": false,
   "scripts": {
@@ -52,8 +62,7 @@
   },
   "dependencies": {},
   "files": [
-    "dist",
-    "README.md"
+    "dist/*"
   ],
   "keywords": [
     "react",

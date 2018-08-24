@@ -18,7 +18,7 @@ Managing connections ins't easy, you have always to keep in mind when they shoul
 
 ```js
 import { HubConnectionBuilder } from '@aspnet/signalr';
-import { createConnectionContext } from '@hwdtech/react-signalr/dist/createConnectionContext';
+import { createConnectionContext } from '@hwdtech/react-signalr';
 
 const createHubConnection = () => {
   /* build a connection instance here, for example */
