@@ -48,3 +48,42 @@ When `Provider` component is mounted it attempts to open a connection the `creat
 Since the `Consumer` takes only children function as property you can create your own component that will handle connection side effects ([see example story](https://hwdtech.github.io/react-signalr/?selectedKind=createConnectionContext&selectedStory=Stream%20subscription%20w%2F%20side%20effects))
 
 ## SignalR streams
+
+Hub streams are observables, so in order to get any value from them one have to subscribe. But subscriptions also have to be disposed. This library uses the same approach to dispose subscription as for closing hub connections.
+
+### Simplified usage example
+
+```js
+const { Provider, Consumer, createStreamSubscriber } = createConnectionContext(createHubConnection);
+
+/**
+ * createStreamSubscriber will return a react component which props will be mapped to a stream arguments.
+ * In other words, under the hood the following code will be invoked to setup a stream:
+ * <code>
+ *   connection.stream('ObservableCounter', props.count, props.interval);
+ * </code>
+ */
+const CounterSubscriber = createStreamSubscriber(
+  'ObservableCounter', // hub stream name
+  props => [props.count, props.interval] // mapper function from component props to hub stream arguments
+);
+
+/* later in the code */
+<Provider>
+  <div>
+	{/* somewhere deep in the application tree */}
+    <CounterSubscriber count={10} interval={1}>
+    {({ value, error, done }) => {
+	  if (done) return 'Done!';
+      if (error) return error.message;
+      if (value != null) return value;
+      return Connecting...
+    }}
+    </CounterSubscriber>
+  </div>
+</Provider>;
+```
+
+When `CounterSubscriber` component is mounted it attempts to subscribe to a hub stream. The subscription will pass observable value to a children function. When `CounterSubscriber` is unmounted it attempts to dispose active subscription. Also note that `CounterSubscriber` don't need `Consumer` wrapper, since it uses it under the hood.
+
+Since the `CounterSubscriber` takes children function as property you can create your own component that will handle hub stream side effects ([see example story](https://hwdtech.github.io/react-signalr/?selectedKind=createConnectionContext&selectedStory=Stream%20subscription%20w%2F%20side%20effects))
