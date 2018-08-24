@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { PureComponent, SFC } from 'react';
+import React, { PureComponent, SFC } from 'react';
 import { IObservableSubscriberResult } from '../lib/ObservableSubscriber';
 import { IConnectionStatus } from '../lib/createConnectionContext';
 

@@ -1,5 +1,9 @@
-import * as React from 'react';
-import { ComponentClass, createContext, PureComponent, ReactNode } from 'react';
+import React, {
+  ComponentClass,
+  createContext,
+  PureComponent,
+  ReactNode
+} from 'react';
 import { HubConnection } from '@aspnet/signalr';
 import {
   ObservableSubscriber,
