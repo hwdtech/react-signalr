@@ -5,7 +5,11 @@ import {
   CounterConnectionContext,
   InvalidConnectionContext
 } from './connections';
-import { StreamSideEffectResult, StreamSampleResult } from './streamHelpers';
+import {
+  StreamSideEffectResult,
+  StreamSampleResult,
+  ConnectionStatus
+} from './helpers';
 
 interface ICounterProps {
   count: number;
@@ -25,7 +29,7 @@ storiesOf('createConnectionContext', module)
     <CounterConnectionContext.Provider>
       <div>
         <CounterConnectionContext.Consumer>
-          {value => value.connection && 'Connected ✔️'}
+          {value => <ConnectionStatus {...value} />}
         </CounterConnectionContext.Consumer>
       </div>
     </CounterConnectionContext.Provider>
@@ -34,7 +38,7 @@ storiesOf('createConnectionContext', module)
     <InvalidConnectionContext.Provider>
       <div>
         <InvalidConnectionContext.Consumer>
-          {({ connectionError }) => connectionError && 'Connection failed ❌'}
+          {value => <ConnectionStatus {...value} />}
         </InvalidConnectionContext.Consumer>
       </div>
     </InvalidConnectionContext.Provider>

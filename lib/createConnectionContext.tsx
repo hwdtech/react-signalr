@@ -32,7 +32,7 @@ class ConnectionDisposer {
   }
 }
 
-export interface IConnectionContextValue {
+export interface IConnectionStatus {
   connection?: HubConnection;
   connectionError?: Error;
 }
@@ -40,7 +40,7 @@ export interface IConnectionContextValue {
 export const createConnectionContext = (
   createConnection: () => HubConnection
 ) => {
-  const { Provider, Consumer } = createContext<IConnectionContextValue>({});
+  const { Provider, Consumer } = createContext<IConnectionStatus>({});
 
   function createStreamSubscriber<TProps, TValue>(
     streamName: string,
@@ -70,7 +70,7 @@ export const createConnectionContext = (
 
   class ConnectionProvider extends PureComponent<
     { children: ReactNode },
-    IConnectionContextValue
+    IConnectionStatus
   > {
     state = {};
     private mounted = false;
