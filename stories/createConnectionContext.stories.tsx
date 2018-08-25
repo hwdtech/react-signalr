@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import {
   CounterConnectionContext,
   InvalidConnectionContext
-} from './connections';
+} from '../lib/__tests__/helpers/connections';
 import {
   StreamSideEffectResult,
   StreamSampleResult,

@@ -21,6 +21,7 @@
     "fmt": "prettier --write 'lib/**/*' '*.md'",
     "build": "rimraf dist && NODE_ENV=production tsc",
     "precommit": "lint-staged",
+    "prepush": "npm test",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "deploy-storybook": "storybook-to-ghpages"
