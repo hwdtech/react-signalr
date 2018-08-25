@@ -1,5 +1,5 @@
 import { HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';
-import { createConnectionContext } from '../lib/createConnectionContext';
+import { createConnectionContext } from '../../createConnectionContext';
 
 const urlNamespace = 'https://react-signalr-demo.azurewebsites.net/';
 
