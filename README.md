@@ -17,12 +17,12 @@ Managing connections ins't easy, you have always to keep in mind when they shoul
 ### Simplified usage example
 
 ```js
-import { HubConnectionBuilder } from '@aspnet/signalr';
-import { createConnectionContext } from '@hwdtech/react-signalr';
+import { HubConnectionBuilder } from "@aspnet/signalr";
+import { createConnectionContext } from "@hwdtech/react-signalr";
 
 const createHubConnection = () => {
   /* build a connection instance here, for example */
-  return new HubConnectionBuilder().withUrl('/chathub').build();
+  return new HubConnectionBuilder().withUrl("/chathub").build();
 };
 
 const { Provider, Consumer } = createConnectionContext(createHubConnection);
@@ -34,9 +34,9 @@ const { Provider, Consumer } = createConnectionContext(createHubConnection);
     {/* somewhere deep in the application tree */}
     <Consumer>
       {({ connection, connectionError }) => {
-        if (connection) return 'Connected!';
-        if (connectionError) return 'Connection failed!';
-        return 'Connecting...';
+        if (connection) return "Connected!";
+        if (connectionError) return "Connection failed!";
+        return "Connecting...";
       }}
     </Consumer>
   </div>

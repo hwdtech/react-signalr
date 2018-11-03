@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "sourceMap": false
+  },
+  "exclude": [
+    "src/__test_helpers__",
+    "src/**/*.test.*",
+    "examples"
+  ]
+}

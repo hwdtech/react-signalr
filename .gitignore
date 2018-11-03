@@ -4,3 +4,4 @@ dist
 .idea
 .next
 out
+.cache

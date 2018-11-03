@@ -2,10 +2,10 @@
   "name": "@hwdtech/react-signalr",
   "version": "0.3.1",
   "description": "A set of helper components to work with SignalR hub connections & streams",
-  "main": "./dist/createConnectionContext.js",
+  "main": "./dist/index.js",
   "directories": {
-    "lib": "./lib",
-    "example": "./stories"
+    "lib": "./src",
+    "examples": "./examples"
   },
   "repository": "github:hwdtech/react-signalr",
   "homepage": "https://github.com/hwdtech/react-signalr/blob/master/README.md",
@@ -17,60 +17,51 @@
   "private": false,
   "scripts": {
     "start": "npm run storybook",
+    "watch": "jest --watch --no-cache",
+    "lint": "tslint --project tsconfig.json --fix",
     "test": "jest",
-    "fmt": "prettier --write 'lib/**/*' '*.md'",
-    "build": "rimraf dist && NODE_ENV=production tsc",
+    "fmt": "prettier --write 'src/**/*' '*.md' 'examples/**/*'",
+    "build": "rimraf dist && NODE_ENV=production tsc --project tsconfig.prod.json",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "deploy-storybook": "storybook-to-ghpages"
   },
   "peerDependencies": {
-    "react": "^16.3.0"
+    "@aspnet/signalr": "^1.0.4",
+    "react": "^16.7.0-alpha.0",
+    "react-dom": "^16.7.0-alpha.0"
   },
   "devDependencies": {
     "@aspnet/signalr": "^1.0.4",
-    "@babel/core": "^7.1.2",
-    "@storybook/addon-actions": "^4.0.2",
-    "@storybook/addon-links": "^4.0.2",
-    "@storybook/addons": "^4.0.2",
-    "@storybook/react": "^4.0.2",
-    "@storybook/storybook-deployer": "^2.3.0",
-    "@types/jest": "^23.3.1",
-    "@types/react": "^16.4.18",
-    "@types/storybook__addon-actions": "^3.4.1",
-    "@types/storybook__react": "^3.0.9",
+    "@babel/core": "^7.3.4",
+    "@storybook/addon-actions": "^4.1.13",
+    "@storybook/addon-links": "^4.1.13",
+    "@storybook/addons": "^4.1.13",
+    "@storybook/react": "^4.1.13",
+    "@storybook/storybook-deployer": "^2.8.1",
+    "@types/jest": "^24.0.9",
+    "@types/react": "^16.8.7",
+    "@types/storybook__addon-actions": "^3.4.2",
+    "@types/storybook__react": "^4.0.1",
     "awesome-typescript-loader": "^5.2.1",
     "babel-core": "^6.26.3",
-    "jest": "^23.5.0",
-    "react-testing-library": "^5.0.0",
-    "ts-jest": "^23.1.4",
-    "babel-loader": "^8.0.4",
-    "husky": "^1.1.3",
-    "lint-staged": "^8.0.4",
-    "prettier": "^1.14.3",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
-    "ts-loader": "^5.3.0",
+    "babel-loader": "^8.0.5",
+    "husky": "^1.3.1",
+    "jest": "^24.3.1",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.16.4",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-testing-library": "^6.0.0",
+    "ts-jest": "^24.0.0",
+    "ts-loader": "^5.3.3",
     "tslib": "^1.9.3",
-    "typescript": "^3.1.6",
-    "webpack": "^4.24.0"
-  },
-  "lint-staged": {
-    "**/*.(ts|tsx|md)": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "prettier": {
-    "trailingComma": "none",
-    "singleQuote": true,
-    "semi": true
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "npm test"
-    }
+    "tslint": "^5.13.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.3.3333",
+    "webpack": "^4.29.6"
   },
   "dependencies": {},
   "files": [
@@ -80,24 +71,5 @@
     "react",
     "react-context",
     "signalr"
-  ],
-  "jest": {
-    "roots": [
-      "<rootDir>/lib"
-    ],
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "(__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json"
-    ],
-    "modulePathIgnorePatterns": [
-      "__tests__/helpers"
-    ]
-  }
+  ]
 }
