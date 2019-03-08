@@ -16,7 +16,7 @@ Managing connections ins't easy, you have always to keep in mind when they shoul
 
 The same is true for Hub streams, since they are observables, so in order to get any value from them one have to subscribe. But subscriptions also have to be disposed.
 
-## Version 1.x
+## Versions 1.x
 
 Coming soon, meanwhile you can hack into the examples:
 
@@ -29,8 +29,6 @@ Coming soon, meanwhile you can hack into the examples:
 ### SignalR hub connections
 
 This library utilizes component lifecycle hooks to manage connections and provides a declarative way to open/close hub connections and uses [React context API](https://reactjs.org/docs/context.html)
-
-#### Simplified usage example
 
 ```js
 import { HubConnectionBuilder } from "@aspnet/signalr";
@@ -61,13 +59,9 @@ const { Provider, Consumer } = createConnectionContext(createHubConnection);
 
 When `Provider` component is mounted it attempts to open a connection the `createHubConnection` factory return. When `Provider` component is unmounted it attempt to close the connection it opened previously.
 
-Since the `Consumer` takes only children function as property you can create your own component that will handle connection side effects ([see example story](https://hwdtech.github.io/react-signalr/?selectedKind=createConnectionContext&selectedStory=Stream%20subscription%20w%2F%20side%20effects))
-
 ### SignalR streams
 
 This library uses the same approach to dispose subscription as for closing hub connections.
-
-#### Simplified usage example
 
 ```js
 const { Provider, Consumer, createStreamSubscriber } = createConnectionContext(createHubConnection);
@@ -102,4 +96,4 @@ const CounterSubscriber = createStreamSubscriber(
 
 When `CounterSubscriber` component is mounted it attempts to subscribe to a hub stream. The subscription will pass observable value to a children function. When `CounterSubscriber` is unmounted it attempts to dispose active subscription. Also note that `CounterSubscriber` don't need `Consumer` wrapper, since it uses it under the hood.
 
-Since the `CounterSubscriber` takes children function as property you can create your own component that will handle hub stream side effects ([see example story](https://hwdtech.github.io/react-signalr/?selectedKind=createConnectionContext&selectedStory=Stream%20subscription%20w%2F%20side%20effects))
+Since the `CounterSubscriber` takes children function as property you can create your own component that will handle hub stream side effects, like in the [example](https://github.com/hwdtech/react-signalr/blob/9bcc908aa5ec6d697dbf880aedd9e2daf79f5326/stories/createConnectionContext.stories.tsx#L55)
