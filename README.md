@@ -10,11 +10,27 @@ This package exposes a set of utility components to work with SignalR hub connec
 npm install @hwdtech/react-signalr
 ```
 
-## SignalR hub connections
+## Motivation
 
-Managing connections ins't easy, you have always to keep in mind when they should be closed, to prevent memory leaks and unnecessary resource allocations. React components on the other hand provide 2 useful lifecycle hooks: `componentDidMount` and `componentWillUnmount` and these can be used to open and close underlying connections, so they can be used as disposable wrapper. This library utilizes this approach and provides a declarative way to open/close hub connections and uses [React context API](https://reactjs.org/docs/context.html)
+Managing connections ins't easy, you have always to keep in mind when they should be closed, to prevent memory leaks and unnecessary resource allocations. React components on the other hand provides multiple ways to handle resources initialization and disposal: lifecycle hooks: `componentDidMount` and `componentWillUnmount` or new hooks API. These can be used to open and close underlying connections, so they can be used as disposable wrapper.
 
-### Simplified usage example
+The same is true for Hub streams, since they are observables, so in order to get any value from them one have to subscribe. But subscriptions also have to be disposed.
+
+## Version 1.x
+
+Coming soon, meanwhile you can hack into the examples:
+
+- How to use connection context hook: https://github.com/hwdtech/react-signalr/blob/master/examples/ConnectionStatus.stories.tsx
+- How to use connection stream hook: https://github.com/hwdtech/react-signalr/blob/master/examples/ConnectionStream.stories.tsx
+
+
+## Versions 0.x
+
+### SignalR hub connections
+
+This library utilizes component lifecycle hooks to manage connections and provides a declarative way to open/close hub connections and uses [React context API](https://reactjs.org/docs/context.html)
+
+#### Simplified usage example
 
 ```js
 import { HubConnectionBuilder } from "@aspnet/signalr";
@@ -47,11 +63,11 @@ When `Provider` component is mounted it attempts to open a connection the `creat
 
 Since the `Consumer` takes only children function as property you can create your own component that will handle connection side effects ([see example story](https://hwdtech.github.io/react-signalr/?selectedKind=createConnectionContext&selectedStory=Stream%20subscription%20w%2F%20side%20effects))
 
-## SignalR streams
+### SignalR streams
 
-Hub streams are observables, so in order to get any value from them one have to subscribe. But subscriptions also have to be disposed. This library uses the same approach to dispose subscription as for closing hub connections.
+This library uses the same approach to dispose subscription as for closing hub connections.
 
-### Simplified usage example
+#### Simplified usage example
 
 ```js
 const { Provider, Consumer, createStreamSubscriber } = createConnectionContext(createHubConnection);
