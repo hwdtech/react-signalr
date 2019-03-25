@@ -1,15 +1,14 @@
 import {HubConnection} from "@aspnet/signalr";
-import React, {createContext} from "react";
+import React, {createContext, useContext, useMemo} from "react";
 
 import {
   IAutoProviderProps,
   IConnectionContext,
   IConnectionStatus,
+  StreamCreator,
 } from "./types";
 import {useConnection} from "./useConnection";
-import {ConnectionContext} from "./ConnectionContext";
-
-export {useStream} from "./useStream";
+import {useStream} from "./useStream";
 
 export const createConnectionContext = (
   createConnection: () => HubConnection
@@ -25,5 +24,21 @@ export const createConnectionContext = (
     return <Provider value={connStatus}>{props.children}</Provider>;
   }
 
-  return new ConnectionContext(AutoProvider, context);
+  const useConnectionHook = () => useContext(context);
+
+  return {
+    Provider: AutoProvider,
+
+    useConnection: useConnectionHook,
+
+    useStream<T>(streamCreator: StreamCreator<T>, inputs: any[]) {
+      const {connection} = useConnectionHook();
+      const stream = useMemo(
+        () => (connection ? streamCreator(connection) : null),
+        [connection, ...inputs]
+      );
+
+      return useStream(stream);
+    },
+  };
 };

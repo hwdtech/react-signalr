@@ -15,7 +15,7 @@ function stateReducer<T>(
   return {...state, ...action};
 }
 
-export function useStream<T>(stream: IStreamResult<T> | null) {
+export function useStream<T>(stream: IStreamResult<T> | null): IStreamState<T> {
   const initialState: IStreamState<T> = {
     error: null,
     value: null,
@@ -44,7 +44,8 @@ export function useStream<T>(stream: IStreamResult<T> | null) {
         // closed that means we can handle this error with a noop
       }
     };
-  }, [stream]);
+  }, [stream, setState]);
 
-  return state;
+  // TODO: resolve why type reference doesn't work as expected
+  return state as IStreamState<T>;
 }

@@ -1,6 +1,6 @@
 import {HttpTransportType, HubConnectionBuilder} from "@aspnet/signalr";
 
-import {createConnectionContext} from "../src/createConnectionContext";
+import {createConnectionContext} from "../src";
 
 const urlNamespace = "https://hw-signalr-counter.azurewebsites.net/";
 
@@ -10,7 +10,7 @@ export const CounterContext = createConnectionContext(() =>
     .build()
 );
 
-export const Invalid = createConnectionContext(() =>
+export const InvalidContext = createConnectionContext(() =>
   new HubConnectionBuilder()
     .withUrl(`${urlNamespace}counter1`, HttpTransportType.WebSockets)
     .build()

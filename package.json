@@ -28,8 +28,8 @@
   },
   "peerDependencies": {
     "@aspnet/signalr": "^1.0.4",
-    "react": "^16.7.0-alpha.0",
-    "react-dom": "^16.7.0-alpha.0"
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5"
   },
   "devDependencies": {
     "@aspnet/signalr": "^1.0.4",
@@ -50,8 +50,8 @@
     "jest": "^24.3.1",
     "lint-staged": "^8.1.5",
     "prettier": "^1.16.4",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
     "react-testing-library": "^6.0.0",
     "ts-jest": "^24.0.0",
     "ts-loader": "^5.3.3",

@@ -25,7 +25,7 @@ export function useConnection(createConnection: () => HubConnection) {
     return () => {
       connection.stop();
     };
-  }, [createConnection]);
+  }, [createConnection, setState]);
 
   return state;
 }

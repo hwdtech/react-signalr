@@ -2,14 +2,15 @@ import {storiesOf} from "@storybook/react";
 import React from "react";
 import {IConnectionContext} from "types";
 
-import {useConnectionContext} from "../src/useConnectionContext";
-
-import {CounterContext, Invalid} from "./connections";
+import {
+  CounterContext,
+  InvalidContext,
+} from "../test-support/connectionContextFixtures";
 
 const createStatusWithContext = (
   ctx: IConnectionContext
 ) => (): React.ReactElement<{}> => {
-  const {connection, error} = useConnectionContext(ctx);
+  const {connection, error} = ctx.useConnection();
   if (error) {
     return <>Connection error ❌</>;
   }
@@ -20,7 +21,7 @@ const createStatusWithContext = (
 };
 
 const SuccessfulStatus = createStatusWithContext(CounterContext);
-const FailedStatus = createStatusWithContext(Invalid);
+const FailedStatus = createStatusWithContext(InvalidContext);
 
 storiesOf("Connection status", module)
   .add("Successful connect", () => {
@@ -34,10 +35,10 @@ storiesOf("Connection status", module)
   })
   .add("Connection error", () => {
     return (
-      <Invalid.Provider>
+      <InvalidContext.Provider>
         <div>
           <FailedStatus />
         </div>
-      </Invalid.Provider>
+      </InvalidContext.Provider>
     );
   });
