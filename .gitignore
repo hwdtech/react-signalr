@@ -1,7 +1,8 @@
-node_modules
-dist
 *.log
-.idea
-.next
-out
+.DS_Store
+node_modules
 .cache
+dist
+.vscode
+bin
+obj

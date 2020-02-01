@@ -1,0 +1,10 @@
+{
+  "name": "react-signalr",
+  "private": true,
+  "version": "1.0.0",
+  "license": "MIT",
+  "workspaces": [
+    "packages/example",
+    "packages/react-signalr"
+  ]
+}

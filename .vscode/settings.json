@@ -1,4 +1,0 @@
-{
-  "tslint.run": "onSave",
-  "typescript.tsdk": "node_modules\\typescript\\lib"
-}
